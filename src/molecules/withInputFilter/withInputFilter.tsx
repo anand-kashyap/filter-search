@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FormEvent, useCallback, useState } from 'react';
+import { ChangeEventHandler, ComponentType, FormEvent, useCallback, useState } from 'react';
 import { Input } from '../../atoms/Input/Input';
 import styles from './withInputFilter.module.scss';
 
@@ -6,7 +6,9 @@ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 };
 
-export function withInputFilter(GenericListComponent: React.ComponentType<any>, dataArr: any[]) {
+const filterStrings = (arr: string[], val: string) => arr.filter((item) => item.toLowerCase().startsWith(val)); // lowercasing and checking item string starting with val
+
+export function withInputFilter(GenericListComponent: ComponentType<any>, dataArr: any[]) {
   const displayName = GenericListComponent.displayName || GenericListComponent.name || 'Component'; // for devtools
 
   const CompWithInputFilter = () => {
@@ -14,7 +16,7 @@ export function withInputFilter(GenericListComponent: React.ComponentType<any>, 
 
     const filterItems = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => {
       const inputVal = e.target.value;
-      const newItems = dataArr.filter((item) => item.toLowerCase().startsWith(inputVal)); // lowercasing and checking item string starting with input val
+      const newItems = filterStrings(dataArr, inputVal);
 
       setItemsArr(newItems);
     }, []);

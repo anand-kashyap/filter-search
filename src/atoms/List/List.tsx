@@ -8,7 +8,9 @@ export function List({ data }: ListProps) {
   return data.length > 0 ? (
     <ul className={styles.listContainer}>
       {data.map((dataItem, index) => (
-        <li key={index}>{dataItem}</li>
+        <li tabIndex={0} key={index}>
+          <p>{dataItem}</p>
+        </li>
       ))}
     </ul>
   ) : null;

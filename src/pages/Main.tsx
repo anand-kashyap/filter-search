@@ -6,8 +6,9 @@ const FilteredInput = withInputFilter(List, sampleJSON.data);
 
 export default function Main() {
   return (
-    <div className='container'>
+    <main className='container'>
+      <h1>Search HOC Demo</h1>
       <FilteredInput />
-    </div>
+    </main>
   );
 }
