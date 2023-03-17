@@ -2,11 +2,9 @@ import { ChangeEventHandler, ComponentType, FormEvent, useCallback, useState } f
 import { Input } from '../../atoms/Input/Input';
 import styles from './withInputFilter.module.scss';
 
-const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-};
+const handleSubmit = (e: FormEvent<HTMLFormElement>) => e.preventDefault();
 
-const filterStrings = (arr: string[], val: string) => arr.filter((item) => item.toLowerCase().startsWith(val)); // lowercasing and checking item string starting with val
+export const filterStrings = (arr: string[], val: string) => arr.filter((item) => item.toLowerCase().startsWith(val)); // lowercasing and checking item string starting with val
 
 export function withInputFilter(GenericListComponent: ComponentType<any>, dataArr: any[]) {
   const displayName = GenericListComponent.displayName || GenericListComponent.name || 'Component'; // for devtools
@@ -23,7 +21,7 @@ export function withInputFilter(GenericListComponent: ComponentType<any>, dataAr
 
     return (
       <form onSubmit={handleSubmit} className={styles.inputFilterForm}>
-        <Input label='Filter By: ' handleChange={filterItems} />
+        <Input label='Filter By:' handleChange={filterItems} />
         <div role='alert' className={styles.itemCount}>
           {itemsArr.length} item(s) found
         </div>
