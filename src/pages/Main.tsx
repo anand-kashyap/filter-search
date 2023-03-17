@@ -6,7 +6,7 @@ const FilteredInput = withInputFilter(List, sampleJSON.data);
 
 export default function Main() {
   return (
-    <div>
+    <div className='container'>
       <FilteredInput />
     </div>
   );

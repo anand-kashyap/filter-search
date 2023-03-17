@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.listContainer {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+  max-height: 70vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+
+  > li {
+    border-bottom: 1px solid $neutral-100-color;
+    padding-bottom: 5px;
+  }
+}
