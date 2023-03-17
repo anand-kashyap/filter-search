@@ -1,15 +1,17 @@
+import { ChangeEventHandler } from 'react';
 import styles from './Input.module.scss';
 
 type InputProps = {
   id?: string;
   label: string;
+  handleChange: ChangeEventHandler;
 };
 
-export function Input({ label, id = 'input1' }: InputProps) {
+export function Input({ label, id = 'input1', handleChange }: InputProps) {
   return (
     <div className={styles.inputContainer}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} type='text' />
+      <input id={id} type='text' onChange={handleChange} />
     </div>
   );
 }
