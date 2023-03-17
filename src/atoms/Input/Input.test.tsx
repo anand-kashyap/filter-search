@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Input, InputProps } from './Input';
 
 describe('Atom/Input', () => {
@@ -7,7 +7,7 @@ describe('Atom/Input', () => {
   beforeEach(() => {
     props = {
       label: 'Label for Input',
-      handleChange: jest.fn,
+      handleChange: jest.fn(),
       id: 'input2',
     };
   });
@@ -15,7 +15,16 @@ describe('Atom/Input', () => {
   test('renders Input', () => {
     render(<Input {...props} />);
 
-    const element = screen.getByText(props.label);
+    const element = screen.getByLabelText(props.label);
     expect(element).toBeInTheDocument();
+  });
+
+  test('handleChange is called when input changes', () => {
+    render(<Input {...props} />);
+
+    const inputEl = screen.getByLabelText<HTMLInputElement>(props.label);
+    fireEvent.change(inputEl, { target: { value: 'alg' } });
+
+    expect(props.handleChange).toBeCalled();
   });
 });
