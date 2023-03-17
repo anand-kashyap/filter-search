@@ -24,7 +24,9 @@ export function withInputFilter(GenericListComponent: ComponentType<any>, dataAr
     return (
       <form onSubmit={handleSubmit} className={styles.inputFilterForm}>
         <Input label='Filter By: ' handleChange={filterItems} />
-        <p className={styles.itemCount}>{itemsArr.length} item(s) found</p>
+        <div role='alert' className={styles.itemCount}>
+          {itemsArr.length} item(s) found
+        </div>
         <GenericListComponent data={itemsArr} />
       </form>
     );
