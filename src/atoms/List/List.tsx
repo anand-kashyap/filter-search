@@ -1,3 +1,13 @@
-export function List() {
-  return <div>List</div>;
+type ListProps = {
+  data: string[];
+};
+
+export function List({ data }: ListProps) {
+  return (
+    <ul>
+      {data.map((dataItem, index) => (
+        <li key={index}>{dataItem}</li>
+      ))}
+    </ul>
+  );
 }
