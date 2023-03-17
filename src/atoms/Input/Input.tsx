@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, memo } from 'react';
 import styles from './Input.module.scss';
 
 export type InputProps = {
@@ -15,3 +15,5 @@ export function Input({ label, id = 'input1', handleChange }: InputProps) {
     </div>
   );
 }
+
+export const MemoizedInput = memo(Input);

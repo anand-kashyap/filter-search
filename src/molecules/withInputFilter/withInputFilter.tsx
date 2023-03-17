@@ -1,5 +1,5 @@
 import { ChangeEventHandler, ComponentType, FormEvent, useCallback, useState } from 'react';
-import { Input } from '../../atoms/Input/Input';
+import { MemoizedInput } from '../../atoms/Input/Input';
 import styles from './withInputFilter.module.scss';
 
 const handleSubmit = (e: FormEvent<HTMLFormElement>) => e.preventDefault();
@@ -21,7 +21,7 @@ export function withInputFilter(GenericListComponent: ComponentType<any>, dataAr
 
     return (
       <form onSubmit={handleSubmit} className={styles.inputFilterForm}>
-        <Input label='Filter By:' handleChange={filterItems} />
+        <MemoizedInput label='Filter By:' handleChange={filterItems} />
         <div role='alert' className={styles.itemCount}>
           {itemsArr.length} item(s) found
         </div>
