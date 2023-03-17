@@ -1,6 +1,6 @@
 import styles from './List.module.scss';
 
-type ListProps = {
+export type ListProps = {
   data: string[];
 };
 
