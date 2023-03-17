@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react';
 import styles from './Input.module.scss';
 
-type InputProps = {
+export type InputProps = {
   id?: string;
   label: string;
   handleChange: ChangeEventHandler;
